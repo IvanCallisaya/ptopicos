@@ -9,8 +9,8 @@
     <style>
         /* Estilos para la Barra de Herramientas en la Parte Inferior */
         .toolbar {
-            background-color: #333;
-            color: #fff;
+            background-color: #000;
+            color: #000;
             padding: 10px;
             width: 100%;
             position: fixed;

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AudiusMusicController;
+
 use App\Http\Controllers\VideoGenerationController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +24,6 @@ Route::post('/ruta-para/createClip', [VideoGenerationController::class, 'createC
 Route::post('/ruta-para/createClipSWH', [VideoGenerationController::class, 'createClipSWH'])->name('createClipSWH')->middleware('web');
 Route::post('/webhook/d-id-clip', [VideoGenerationController::class, 'handleWebhook']);
 Route::post('/search-and-download-music', [AudiusMusicController::class, 'searchAndDownloadMusic'])->name('createMusicSWH')->middleware('web');
+
+
+	Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])-> name('admin.dashboard');
