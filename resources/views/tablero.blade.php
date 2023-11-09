@@ -51,6 +51,8 @@
         .content {
             margin-right: 250px; /* Deja espacio para el panel a la derecha */
             margin-bottom: 40px; /* Deja espacio para la barra de herramientas en la parte inferior */
+            display: flex;
+            flex-wrap: wrap;
         }
 
         /* Estilos para el Contenedor Central */
@@ -78,7 +80,25 @@
             background-color: #f44336;
             color: white;
         }
-    </style>
+        .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.create-form-card {
+    border: 1px dashed #999; /* Cambiar el estilo del borde para distinguirlo */
+    padding: 20px;
+    text-align: center; /* Centrar el contenido */
+    font-size: 24px; /* Tamaño de fuente más grande para el símbolo */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el elemento */
+}
+
+.create-form-card a {
+    text-decoration: none; /* Eliminar el subrayado del enlace */
+    color: #333; /* Color del texto del enlace */
+}
+</style>
 </head>
 <body>
 <!-- Contenedor Principal (Tablero) -->
@@ -101,8 +121,17 @@
 
     <!-- Reproductor de Multimedia (Espacio central) -->
     <div class="content">
-        <!-- Aquí puedes incluir un reproductor multimedia -->
-        <!-- Por ejemplo, puedes usar un reproductor de video de HTML5 o una biblioteca de terceros -->
+        <!-- Mostrar items existentes aquí -->
+        @if (isset($items))
+            @foreach($items as $item)
+                @include('partials.card', ['item' => $item])
+            @endforeach
+        @endif
+
+        <!-- Formulario para crear un nuevo item -->
+        <div class="card create-form-card">
+            <a href="{{ route('crear.item') }}">+</a>
+        </div>
     </div>
     <div class="message-section">
         @if (isset($responseData))
